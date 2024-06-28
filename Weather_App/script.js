@@ -7,6 +7,9 @@ const description = document.querySelector(".description");
 const humidity = document.getElementById("humidity");
 const wind_speed = document.getElementById("wind-speed");
 const error_div = document.querySelector(".error");
+const country = document.getElementById("country");
+const longitude = document.getElementById("long");
+const latitude = document.getElementById("lat");
 
 
 async function checkWeather(city){
@@ -33,6 +36,10 @@ async function checkWeather(city){
                 description.innerHTML = `${final_Weather.weather[0].description}`;
                 humidity.innerHTML = `${final_Weather.main.humidity}%`;
                 wind_speed.innerHTML  = `${final_Weather.wind.speed}Km/H`;
+                country.textContent = `${final_Weather.sys.country}`;
+                longitude.textContent = `${final_Weather.coord.lon}`;
+                latitude.textContent  = `${final_Weather.coord.lat}`;
+
     
                 switch(final_Weather.weather[0].main){
                     case "Clouds":
@@ -53,7 +60,7 @@ async function checkWeather(city){
                     case "Snow":
                         weather_body.src = "Images/snow.png";
                         break;
-                }
+                };
             }
         }, 2000);
 
